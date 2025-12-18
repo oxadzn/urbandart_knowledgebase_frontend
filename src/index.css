@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    @apply bg-neutral-950 text-neutral-50;
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont,
+      'SF Pro Text', sans-serif;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    /* Keep the global background very simple; main gradients live inside App */
+    background-color: #050608;
+    color: #f9fafb;
+  }
+}
