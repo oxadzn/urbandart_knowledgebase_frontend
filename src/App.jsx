@@ -27,7 +27,6 @@ function App() {
 
   const messagesEndRef = useRef(null);
 
-  // ✅ FIXED AUTO-SCROLL (block: 'end')
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
       behavior: 'smooth',
@@ -82,17 +81,31 @@ function App() {
   };
 
   return (
-    <div className="flex h-full w-full bg-[#f6f7f9] px-4 py-4 text-neutral-900">
-      <div className="mx-auto flex h-full w-full max-w-7xl flex-col rounded-[32px] border border-black/10 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
-
-        <main className="flex min-h-0 flex-1 flex-col rounded-[28px] bg-white p-4">
+    <div className="
+      flex h-full w-full px-4 py-4 text-neutral-900
+      bg-[radial-gradient(circle_at_top_left,#eef2ff,transparent_45%),radial-gradient(circle_at_bottom_right,#f0fdf4,transparent_40%),#f6f7f9]
+    ">
+      <div className="
+        mx-auto flex h-full w-full max-w-7xl flex-col rounded-[32px]
+        border border-black/10
+        bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.75))]
+        backdrop-blur-xl
+        shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+      ">
+        <main className="flex min-h-0 flex-1 flex-col rounded-[28px] p-4">
 
           {/* History */}
           <div className="mb-4">
             <div className="relative inline-block">
               <button
                 onClick={() => setIsHistoryOpen(v => !v)}
-                className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-700 shadow-sm hover:bg-neutral-50"
+                className="
+                  inline-flex items-center gap-2 rounded-full
+                  border border-black/15
+                  bg-[linear-gradient(180deg,#ffffff,#f5f5f5)]
+                  px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em]
+                  text-neutral-700 shadow-sm hover:shadow-md
+                "
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 Chat history
@@ -100,7 +113,11 @@ function App() {
               </button>
 
               {isHistoryOpen && (
-                <div className="absolute left-0 z-50 mt-2 w-64 max-h-72 overflow-y-auto rounded-2xl border border-black/15 bg-white p-2 text-xs shadow-lg">
+                <div className="
+                  absolute left-0 z-50 mt-2 w-64 max-h-72 overflow-y-auto
+                  rounded-2xl border border-black/15 bg-white p-2 text-xs
+                  shadow-[0_16px_40px_rgba(0,0,0,0.18)]
+                ">
                   {clients.filter(c => c.id !== 'master').map(client => (
                     <button
                       key={client.id}
@@ -119,7 +136,11 @@ function App() {
           </div>
 
           {/* Header */}
-          <header className="mb-4 rounded-2xl border border-black/15 bg-neutral-100 px-5 py-4">
+          <header className="
+            mb-4 rounded-2xl border border-black/15
+            bg-[linear-gradient(135deg,#f8fafc,#eef2ff)]
+            px-5 py-4
+          ">
             <span className="text-xs uppercase tracking-[0.25em] text-neutral-700">
               {clients.find(c => c.id === activeClientId)?.name}
             </span>
@@ -136,8 +157,8 @@ function App() {
                   <div
                     className={`max-w-[70%] rounded-3xl px-4 py-3 text-sm ${
                       msg.role === 'user'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-neutral-100 text-neutral-900 border border-black/15'
+                        ? 'bg-[linear-gradient(135deg,#0f0f0f,#262626)] text-white shadow-md'
+                        : 'bg-white text-neutral-900 border border-black/15 shadow-sm'
                     }`}
                   >
                     {msg.text}
@@ -151,7 +172,12 @@ function App() {
           {/* Composer */}
           <section className="border-t border-black/15 px-4 py-4">
             <div className="mx-auto max-w-3xl">
-              <div className="flex h-12 items-center gap-3 rounded-full border border-black/15 bg-neutral-50 px-4">
+              <div className="
+                flex h-12 items-center gap-3 rounded-full
+                border border-black/15
+                bg-[linear-gradient(180deg,#ffffff,#f3f4f6)]
+                px-4 shadow-sm
+              ">
                 <textarea
                   rows={1}
                   placeholder="Message"
@@ -166,7 +192,11 @@ function App() {
                   className="h-full flex-1 resize-none bg-transparent text-sm text-neutral-900 placeholder:text-neutral-500 leading-[3rem] outline-none"
                 />
 
-                <div className="relative inline-flex h-9 items-center rounded-full bg-blue-600 text-white">
+                <div className="
+                  relative inline-flex h-9 items-center rounded-full
+                  bg-[linear-gradient(135deg,#2563eb,#1d4ed8)]
+                  text-white shadow-md
+                ">
                   <button
                     type="button"
                     onClick={handleSend}
@@ -189,7 +219,11 @@ function App() {
                   </button>
 
                   {isSendModeOpen && (
-                    <div className="absolute bottom-full right-0 z-50 mb-2 w-36 rounded-xl border border-black/15 bg-white py-1 text-xs text-neutral-700 shadow-lg">
+                    <div className="
+                      absolute bottom-full right-0 z-50 mb-2 w-36 rounded-xl
+                      border border-black/15 bg-white py-1 text-xs text-neutral-700
+                      shadow-[0_14px_40px_rgba(0,0,0,0.18)]
+                    ">
                       {['Go', 'Sumit', 'New'].map(mode => (
                         <button
                           key={mode}
@@ -208,7 +242,6 @@ function App() {
               </div>
             </div>
           </section>
-
         </main>
       </div>
     </div>
