@@ -17,7 +17,7 @@
     margin: 0;
     min-height: 100vh;
     /* Keep the global background very simple; main gradients live inside App */
-    background-color: #1a1a1b;
-    color: #e0eef5;
+    background-color: #f0f2f5;
+    color: #1f2122;
   }
 }
